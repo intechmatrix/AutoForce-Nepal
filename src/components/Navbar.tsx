@@ -30,7 +30,7 @@ export function Navbar() {
 
   return (
     <>
-      {/* Top info bar */}
+      {/* Top info bar - fixed at the top */}
       <div className="bg-gray-900 text-white py-2 hidden md:block">
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center space-x-6 text-sm">
@@ -50,10 +50,12 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Main navbar */}
+      {/* Main navbar - position is fixed, but properly adjusted based on scrolling */}
       <nav
-        className={`fixed top-0 md:top-9 w-full z-50 transition-all duration-300 ${
-          isScrolled ? "bg-white shadow-lg" : "bg-white md:bg-transparent"
+        className={`fixed w-full z-50 transition-all duration-300 ${
+          isScrolled
+            ? "top-0 bg-white shadow-lg"
+            : "top-0 md:top-9 bg-white md:bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4">
