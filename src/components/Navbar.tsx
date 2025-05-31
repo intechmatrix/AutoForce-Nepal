@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, Phone, Mail, Clock } from "lucide-react";
+import Image from "next/image";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -67,10 +68,13 @@ export function Navbar() {
                 className="text-red-600 font-bold text-xl flex items-center"
                 onClick={closeMenu}
               >
-                <span className="bg-red-600 text-white p-1 rounded mr-2 text-sm">
-                  AF
-                </span>
-                <span>AutoForce Nepal</span>
+                <Image
+                  src="/logo.png"
+                  alt="AutoForce Nepal Logo"
+                  width={80}
+                  height={80}
+                  className="mr-2"
+                />
               </Link>
             </div>
 
