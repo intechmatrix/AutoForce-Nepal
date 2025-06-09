@@ -19,7 +19,7 @@ export default function AboutSection({ isPreview = false }) {
           <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
             <div className="text-center">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                About AutoForce Nepal
+                About AutoForce Nepal Pvt. Ltd.
               </h1>
               <div className="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
               <p className="text-xl max-w-3xl mx-auto">
@@ -43,7 +43,7 @@ export default function AboutSection({ isPreview = false }) {
             <div className="order-2 lg:order-1">
               {isPreview ? (
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                  About AutoForce Nepal
+                  About AutoForce Nepal Pvt. Ltd.
                 </h2>
               ) : (
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">

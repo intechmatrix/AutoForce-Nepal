@@ -20,7 +20,7 @@ export default function HeroPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="text-center lg:text-left">
               <h1 className="text-4xl md:text-6xl font-bold mb-4">
-                AutoForce Nepal
+                AutoForce Nepal Pvt. Ltd.
               </h1>
               <div className="w-24 h-1 bg-yellow-500 mb-6 mx-auto lg:mx-0"></div>
               <p className="text-2xl font-semibold mb-4">Ride With Power</p>
