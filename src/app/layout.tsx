@@ -26,16 +26,13 @@ export const metadata: Metadata = {
     "premium lubricants Nepal",
     "car oil distributor Nepal",
     "Dubai lubricants",
-    "vehicle maintenance Nepal",
-    "automotive grease Nepal",
-    "high performance engine oil",
   ],
   authors: [{ name: "AutoForce Nepal PVT LTD" }],
   openGraph: {
     title: "AutoForce Nepal | Distributor of Progulf Lubricants in Nepal",
     description:
       "Trusted importer of high-performance engine oils and greases. Discover Progulf Lubricants – quality you can rely on, tested to global standards.",
-    url: "https://autoforce-nepal.com", // Replace with actual URL
+    url: "https://autoforce-nepal.com",
     siteName: "AutoForce Nepal",
     type: "website",
     locale: "en_NP",
