@@ -69,7 +69,7 @@ export function Navbar() {
                 onClick={closeMenu}
               >
                 <Image
-                  src="/logo.png"
+                  src="/Logo.png"
                   alt="AutoForce Nepal Logo"
                   width={80}
                   height={80}

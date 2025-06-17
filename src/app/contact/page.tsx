@@ -44,47 +44,67 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const response = await fetch("https://formspree.io/f/mdkzeyyq", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitResult({
+          success: true,
+          message:
+            "Thank you! Your message has been received. We'll get back to you shortly.",
+        });
+
+        // Clear form
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        const data = await response.json();
+        setSubmitResult({
+          success: false,
+          message:
+            data?.errors?.[0]?.message ||
+            "Something went wrong. Please try again later.",
+        });
+      }
+    } catch (error) {
       setSubmitResult({
-        success: true,
-        message:
-          "Thank you! Your message has been received. We'll get back to you shortly.",
+        success: false,
+        message: "An error occurred. Please try again later.",
       });
-
-      // Reset form after successful submission
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
-
-      // Clear success message after 5 seconds
+    } finally {
+      setIsSubmitting(false);
       setTimeout(() => {
         setSubmitResult(null);
       }, 5000);
-    }, 1500);
+    }
   };
 
   return (
     <div className="pt-16 md:pt-24">
-      {/* Header Section */}
+      {/* Header */}
       <div className="bg-gradient-to-r from-red-600 to-red-700 text-white">
-        <div className="max-w-7xl mx-auto px-4 py-16 md:py-24">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
-            <div className="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
-            <p className="text-xl max-w-3xl mx-auto">
-              Have questions about our products or need assistance? Get in touch
-              with our team today.
-            </p>
-          </div>
+        <div className="max-w-7xl mx-auto px-4 py-16 md:py-24 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
+          <div className="w-24 h-1 bg-yellow-500 mx-auto mb-6" />
+          <p className="text-xl max-w-3xl mx-auto">
+            Have questions about our products or need assistance? Get in touch
+            with our team today.
+          </p>
         </div>
       </div>
 
-      {/* Contact Information and Form */}
+      {/* Content */}
       <section className="py-16 bg-white">
         <div
           className={`max-w-7xl mx-auto px-4 transition-all duration-1000 ${
@@ -92,7 +112,7 @@ export default function ContactPage() {
           }`}
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Information */}
+            {/* Contact Info */}
             <div className="bg-gray-50 rounded-2xl p-8 shadow-lg">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 Get In Touch
@@ -174,71 +194,53 @@ export default function ContactPage() {
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
+                  <label htmlFor="name" className="block mb-1 font-medium">
                     Your Name
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <User className="h-5 w-5 text-gray-400" />
-                    </div>
+                    <User className="absolute left-3 top-3 text-gray-400" />
                     <input
                       type="text"
-                      id="name"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="pl-10 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 py-3"
-                      placeholder="Full Name"
                       required
+                      placeholder="Full Name"
+                      className="pl-10 py-3 w-full border rounded-md"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
+                  <label htmlFor="email" className="block mb-1 font-medium">
                     Email Address
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <Mail className="h-5 w-5 text-gray-400" />
-                    </div>
+                    <Mail className="absolute left-3 top-3 text-gray-400" />
                     <input
                       type="email"
-                      id="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="pl-10 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 py-3"
-                      placeholder="your@email.com"
                       required
+                      placeholder="your@email.com"
+                      className="pl-10 py-3 w-full border rounded-md"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
+                  <label htmlFor="subject" className="block mb-1 font-medium">
                     Subject
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <MessageSquare className="h-5 w-5 text-gray-400" />
-                    </div>
+                    <MessageSquare className="absolute left-3 top-3 text-gray-400" />
                     <select
-                      id="subject"
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      className="pl-10 block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500 py-3"
                       required
+                      className="pl-10 py-3 w-full border rounded-md"
                     >
                       <option value="">Select a subject</option>
                       <option value="Product Inquiry">Product Inquiry</option>
@@ -254,36 +256,30 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
+                  <label htmlFor="message" className="block mb-1 font-medium">
                     Your Message
                   </label>
                   <textarea
-                    id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     rows={5}
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring-red-500"
-                    placeholder="How can we help you?"
                     required
+                    placeholder="How can we help you?"
+                    className="w-full border rounded-md p-3"
                   ></textarea>
                 </div>
 
-                <div>
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className={`w-full flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 ${
-                      isSubmitting ? "opacity-75 cursor-not-allowed" : ""
-                    }`}
-                  >
-                    {isSubmitting ? "Sending..." : "Send Message"}
-                    <Send className="ml-2 h-5 w-5" />
-                  </button>
-                </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`w-full flex items-center justify-center px-6 py-3 rounded-md text-white font-medium bg-red-600 hover:bg-red-700 ${
+                    isSubmitting ? "opacity-75 cursor-not-allowed" : ""
+                  }`}
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                  <Send className="ml-2 h-5 w-5" />
+                </button>
               </form>
             </div>
           </div>
