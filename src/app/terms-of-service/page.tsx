@@ -312,31 +312,6 @@ export default function TermsOfServicePage() {
                   of the new Terms.
                 </p>
               </div>
-
-              {/* Contact Information */}
-              <div className="bg-gray-50 p-6 rounded-xl">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                  Contact Information
-                </h2>
-                <p className="text-gray-700 mb-4">
-                  If you have any questions about these Terms of Service, please
-                  contact us:
-                </p>
-                <div className="space-y-3">
-                  <div className="flex items-center space-x-3">
-                    <FileText className="h-5 w-5 text-red-600" />
-                    <span className="text-gray-700">
-                      Legal Department: legal@autoforcenepal.com
-                    </span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Gavel className="h-5 w-5 text-red-600" />
-                    <span className="text-gray-700">
-                      We will respond to legal inquiries within 5 business days
-                    </span>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
