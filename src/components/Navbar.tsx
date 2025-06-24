@@ -37,7 +37,7 @@ export function Navbar() {
           <div className="flex items-center space-x-6 text-sm">
             <div className="flex items-center space-x-2">
               <Phone className="h-4 w-4 text-red-500" />
-              <span>+977 1 4372104</span>
+              <span>+977-9801009929</span>
             </div>
             <div className="flex items-center space-x-2">
               <Mail className="h-4 w-4 text-yellow-500" />

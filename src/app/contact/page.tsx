@@ -28,11 +28,7 @@ export default function ContactPage() {
     setIsVisible(true);
   }, []);
 
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -40,12 +36,12 @@ export default function ContactPage() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("https://formspree.io/f/mdkzeyyq", {
+      const response = await fetch("https://formspree.io/f/mjkreyag", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -141,7 +137,7 @@ export default function ContactPage() {
                     <h3 className="text-lg font-semibold text-gray-900">
                       Phone Number
                     </h3>
-                    <p className="text-gray-700">+977 1 4372104</p>
+                    <p className="text-gray-700">+977-9801009929</p>
                   </div>
                 </div>
 
@@ -192,7 +188,7 @@ export default function ContactPage() {
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block mb-1 font-medium">
                     Your Name
@@ -271,16 +267,17 @@ export default function ContactPage() {
                 </div>
 
                 <button
-                  type="submit"
+                  type="button"
+                  onClick={handleSubmit}
                   disabled={isSubmitting}
-                  className={`w-full flex items-center justify-center px-6 py-3 rounded-md text-white font-medium bg-red-600 hover:bg-red-700 ${
+                  className={`w-full flex items-center justify-center px-6 py-3 rounded-md text-white font-medium bg-red-600 hover:bg-red-700 transition-colors duration-200 ${
                     isSubmitting ? "opacity-75 cursor-not-allowed" : ""
                   }`}
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
                   <Send className="ml-2 h-5 w-5" />
                 </button>
-              </form>
+              </div>
             </div>
           </div>
         </div>

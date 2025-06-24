@@ -189,98 +189,104 @@ export default function CategoryPage() {
                       const images = getProductImages(product);
 
                       return (
-                        <div
+                        <Link
                           key={product.id}
-                          className="bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                          href={`/products/slug/${product.slug}`}
+                          className="inline-flex items-center text-red-600 font-medium hover:text-red-700 transition-colors duration-300 group"
                         >
-                          <div className="relative h-64 group">
-                            <Image
-                              src={product.photo_1}
-                              alt={product.name}
-                              fill
-                              className="object-cover transition-transform duration-300 group-hover:scale-105"
-                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                              onError={(e) => {
-                                e.currentTarget.src =
-                                  "/images/placeholder-product.jpg";
-                              }}
-                            />
+                          <div
+                            key={product.id}
+                            className="bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+                          >
+                            <div className="relative h-64 group">
+                              <Image
+                                src={product.photo_1}
+                                alt={product.name}
+                                fill
+                                className="object-contain transition-transform duration-300 group-hover:scale-105"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                onError={(e) => {
+                                  e.currentTarget.src =
+                                    "/images/placeholder-product.jpg";
+                                }}
+                              />
 
-                            {/* Video indicator */}
-                            {product.videolink && (
-                              <div className="absolute top-2 left-2 bg-red-600 text-white p-2 rounded-full">
-                                <Play className="h-4 w-4" />
+                              {/* Video indicator */}
+                              {product.videolink && (
+                                <div className="absolute top-2 left-2 bg-red-600 text-white p-2 rounded-full">
+                                  <Play className="h-4 w-4" />
+                                </div>
+                              )}
+
+                              {/* Price badge */}
+                              <div className="absolute top-2 right-2 bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                NPR {product.price}
                               </div>
-                            )}
 
-                            {/* Price badge */}
-                            <div className="absolute top-2 right-2 bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                              NPR {product.price}
+                              {/* Image count indicator */}
+                              {images.length > 1 && (
+                                <div className="absolute bottom-2 right-2 bg-black bg-opacity-60 text-white px-2 py-1 rounded text-xs">
+                                  {images.length} Photos
+                                </div>
+                              )}
                             </div>
 
-                            {/* Image count indicator */}
-                            {images.length > 1 && (
-                              <div className="absolute bottom-2 right-2 bg-black bg-opacity-60 text-white px-2 py-1 rounded text-xs">
-                                {images.length} Photos
+                            <div className="p-6">
+                              <h3 className="text-xl font-bold text-gray-900 mb-2">
+                                {product.name}
+                              </h3>
+
+                              <p className="text-gray-700 mb-4 text-sm line-clamp-2">
+                                {product.description}
+                              </p>
+
+                              {/* Highlights */}
+                              {highlights.length > 0 && (
+                                <div className="space-y-1 mb-6">
+                                  {highlights
+                                    .slice(0, 3)
+                                    .map((highlight, index) => (
+                                      <div
+                                        key={index}
+                                        className="flex items-start space-x-2"
+                                      >
+                                        <Star className="h-4 w-4 text-yellow-500 flex-shrink-0 mt-0.5" />
+                                        <span className="text-xs text-gray-600">
+                                          {highlight}
+                                        </span>
+                                      </div>
+                                    ))}
+                                  {highlights.length > 3 && (
+                                    <p className="text-xs text-gray-500 ml-6">
+                                      +{highlights.length - 3} more features
+                                    </p>
+                                  )}
+                                </div>
+                              )}
+
+                              <div className="flex justify-between items-center">
+                                <Link
+                                  href={`/products/slug/${product.slug}`}
+                                  className="inline-flex items-center text-red-600 font-medium hover:text-red-700 transition-colors duration-300 group"
+                                >
+                                  <Eye className="mr-1 h-4 w-4" />
+                                  View Details
+                                  <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                </Link>
+
+                                <Link
+                                  href={`/contact?product=${encodeURIComponent(
+                                    product.name
+                                  )}`}
+                                  className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 transition-colors duration-300"
+                                >
+                                  <ShoppingCart className="mr-1 h-4 w-4" />
+                                  Quote
+                                </Link>
                               </div>
-                            )}
-                          </div>
-
-                          <div className="p-6">
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">
-                              {product.name}
-                            </h3>
-
-                            <p className="text-gray-700 mb-4 text-sm line-clamp-2">
-                              {product.description}
-                            </p>
-
-                            {/* Highlights */}
-                            {highlights.length > 0 && (
-                              <div className="space-y-1 mb-6">
-                                {highlights
-                                  .slice(0, 3)
-                                  .map((highlight, index) => (
-                                    <div
-                                      key={index}
-                                      className="flex items-start space-x-2"
-                                    >
-                                      <Star className="h-4 w-4 text-yellow-500 flex-shrink-0 mt-0.5" />
-                                      <span className="text-xs text-gray-600">
-                                        {highlight}
-                                      </span>
-                                    </div>
-                                  ))}
-                                {highlights.length > 3 && (
-                                  <p className="text-xs text-gray-500 ml-6">
-                                    +{highlights.length - 3} more features
-                                  </p>
-                                )}
-                              </div>
-                            )}
-
-                            <div className="flex justify-between items-center">
-                              <Link
-                                href={`/products/slug/${product.slug}`}
-                                className="inline-flex items-center text-red-600 font-medium hover:text-red-700 transition-colors duration-300 group"
-                              >
-                                <Eye className="mr-1 h-4 w-4" />
-                                View Details
-                                <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                              </Link>
-
-                              <Link
-                                href={`/contact?product=${encodeURIComponent(
-                                  product.name
-                                )}`}
-                                className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 transition-colors duration-300"
-                              >
-                                <ShoppingCart className="mr-1 h-4 w-4" />
-                                Quote
-                              </Link>
                             </div>
                           </div>
-                        </div>
+                        </Link>
                       );
                     })}
                   </div>

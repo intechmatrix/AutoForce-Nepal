@@ -34,36 +34,12 @@ export function Footer() {
             </p>
             <div className="flex space-x-3 sm:space-x-4">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/share/1J38k9JDHC/?mibextid=qi2Omg"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gray-800 p-2 sm:p-3 rounded-full hover:bg-red-600 transition-colors duration-300"
+                className="bg-gray-800 p-2 sm:p-3 rounded-full hover:bg-blue-600 transition-colors duration-300"
               >
                 <Facebook className="h-4 w-4 sm:h-5 sm:w-5" />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gray-800 p-2 sm:p-3 rounded-full hover:bg-red-600 transition-colors duration-300"
-              >
-                <Instagram className="h-4 w-4 sm:h-5 sm:w-5" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gray-800 p-2 sm:p-3 rounded-full hover:bg-red-600 transition-colors duration-300"
-              >
-                <Twitter className="h-4 w-4 sm:h-5 sm:w-5" />
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gray-800 p-2 sm:p-3 rounded-full hover:bg-red-600 transition-colors duration-300"
-              >
-                <Youtube className="h-4 w-4 sm:h-5 sm:w-5" />
               </a>
             </div>
           </div>
@@ -103,7 +79,7 @@ export function Footer() {
               <li className="flex items-start space-x-3">
                 <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-500 flex-shrink-0 mt-1" />
                 <span className="text-gray-400 text-sm sm:text-base">
-                  Tinkune, Kathmandu, Nepal
+                  Budhanilkantha-12, Kathmandu, Nepal
                 </span>
               </li>
               <li className="flex items-center space-x-3">
@@ -112,7 +88,7 @@ export function Footer() {
                   href="tel:+97714372104"
                   className="text-gray-400 hover:text-white transition-colors text-sm sm:text-base"
                 >
-                  +977 1 4372104
+                  +977-9801009929
                 </a>
               </li>
               <li className="flex items-center space-x-3">
@@ -174,6 +150,21 @@ export function Footer() {
             />
           </svg>
         </button>
+      </div>
+      {/* Attribution Footer */}
+      <div className="bg-gray-950 border-t border-gray-800 flex items-center justify-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-center sm:justify-between items-center space-y-2 sm:space-y-0">
+          <p className="text-gray-500 text-xs sm:text-sm text-center">
+            Powered by{" "}
+            <Link
+              target="_blank"
+              href="https://techmatrixinnovations.com/"
+              className="text-red-500 hover:underline font-medium"
+            >
+              Tech Matrix Innovations Pvt. Ltd.
+            </Link>
+          </p>
+        </div>
       </div>
     </footer>
   );
