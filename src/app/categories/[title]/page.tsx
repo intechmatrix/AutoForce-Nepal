@@ -218,11 +218,6 @@ export default function CategoryPage() {
                                 </div>
                               )}
 
-                              {/* Price badge */}
-                              <div className="absolute top-2 right-2 bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                                NPR {product.price}
-                              </div>
-
                               {/* Image count indicator */}
                               {images.length > 1 && (
                                 <div className="absolute bottom-2 right-2 bg-black bg-opacity-60 text-white px-2 py-1 rounded text-xs">
